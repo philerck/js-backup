@@ -1,0 +1,730 @@
+<!doctype html>
+<html class="no-js" lang="de" data-content_root="../../">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="index" title="Stichwortverzeichnis" href="../../genindex.html" /><link rel="search" title="Suche" href="../../search.html" /><link rel="next" title="Eventweitergabe" href="eventweitergabe.html" /><link rel="prev" title="Events" href="events.html" />
+        <link rel="prefetch" href="../../_static/js-logo.png" as="image" />
+
+    <link rel="shortcut icon" href="../../_static/js-logo.png"/><!-- Generated with Sphinx 8.2.3 and Furo 2025.07.19 -->
+        <title>Eventverarbeitung - JavaScript Crashkurs</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=d111a655" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=25af2a20" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css?v=8dab3a3b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=02ffc43f" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f2f2f2;
+  --color-code-foreground: #1e1e1e;
+  --color-brand-primary: #333333;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #2b2b2b;
+  --color-code-foreground: #f8f8f2;
+  --color-brand-primary: #f7df1e;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #2b2b2b;
+  --color-code-foreground: #f8f8f2;
+  --color-brand-primary: #f7df1e;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+     
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input
+  type="checkbox"
+  class="sidebar-toggle"
+  name="__navigation"
+  id="__navigation"
+/>
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc" />
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"
+          ><svg><use href="#svg-menu"></use></svg
+        ></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../../index.html"
+        ><div class="brand">JavaScript Crashkurs</div></a
+      >
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">
+            Toggle Light / Dark / Auto color theme
+          </div>
+          <svg class="theme-icon-when-auto-light">
+            <use href="#svg-sun-with-moon"></use>
+          </svg>
+          <svg class="theme-icon-when-auto-dark">
+            <use href="#svg-moon-with-sun"></use>
+          </svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label
+        class="toc-overlay-icon toc-header-icon"
+        for="__toc"
+      >
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"
+          ><svg><use href="#svg-toc"></use></svg
+        ></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../../index.html">
+  <div class="sidebar-logo-container">
+    <img class="sidebar-logo" src="../../_static/js-logo.png" alt="Logo"/>
+  </div>
+  
+  <span class="sidebar-brand-text">JavaScript Crashkurs</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../../search.html" role="search">
+  <input class="sidebar-search" placeholder="Suche" name="q" aria-label="Suche">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">Inhalt:</span></p>
+<ul class="current">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../grundlagen/grundlagen.html">Grundlagen</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Grundlagen</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../grundlagen/einbinden.html">JavaScript einbinden</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../grundlagen/variablen.html">Variablen</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../grundlagen/datentypen.html">Datentypen</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of Datentypen</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../grundlagen/datentypen-funktionen/string.html">String</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../grundlagen/datentypen-funktionen/number.html">Number</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../grundlagen/datentypen-funktionen/boolean.html">Boolean</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../grundlagen/operatoren.html">Operatoren</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../grundlagen/eingabe-ausgabe.html">Ein- und Ausgabe</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../grundlagen/bedingungen.html">Bedingungen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../grundlagen/schleifen.html">Schleifen</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../grundlagen/arrays.html">Arrays</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle navigation of Arrays</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../grundlagen/arrays-funktionen/werte-hinzufuegen.html">Werte hinzufügen</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../grundlagen/arrays-funktionen/werte-entfernen.html">Werte entfernen</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../grundlagen/arrays-funktionen/arrays-eigenschaften.html">Eigenschaften</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../grundlagen/arrays-funktionen/kopieren-kombinieren.html">Kopieren &amp; Kombinieren</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../grundlagen/arrays-funktionen/iteration.html">Iteration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../grundlagen/arrays-funktionen/spezielle-methoden.html">Spezielle Methoden</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../grundlagen/funktionen.html">Funktionen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../grundlagen/mathematische-funktionen.html">Mathe-Methoden</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../grundlagen/arrays-hoehere-methoden.html">map, filter, reduce</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../grundlagen/objekte.html">Objekte in JavaScript</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../grundlagen/schleifen_arrays_objekte.html">Schleifen für Arrays und Objekte</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current has-children"><a class="reference internal" href="../dom-manipulation.html">DOM Manipulation</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle navigation of DOM Manipulation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../dom.html">DOM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../elemente-finden.html">Elemente finden</a></li>
+<li class="toctree-l2 current has-children"><a class="reference internal" href="events.html">Events</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><div class="visually-hidden">Toggle navigation of Events</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l3 current current-page"><a class="current reference internal" href="#">Eventverarbeitung</a></li>
+<li class="toctree-l3"><a class="reference internal" href="eventweitergabe.html">Eventweitergabe</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../texte-werte-veraendern.html">Texte und Werte</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../elemente-erstellen.html">Elemente erstellen</a></li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path
+              d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"
+            ></path>
+          </svg>
+          <span>Nach oben</span>
+        </a>
+        <div class="content-icon-container">
+          
+
+<div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">
+                Toggle Light / Dark / Auto color theme
+              </div>
+              <svg class="theme-icon-when-auto-light">
+                <use href="#svg-sun-with-moon"></use>
+              </svg>
+              <svg class="theme-icon-when-auto-dark">
+                <use href="#svg-moon-with-sun"></use>
+              </svg>
+              <svg class="theme-icon-when-dark">
+                <use href="#svg-moon"></use>
+              </svg>
+              <svg class="theme-icon-when-light">
+                <use href="#svg-sun"></use>
+              </svg>
+            </button>
+          </div>
+          <label
+            class="toc-overlay-icon toc-content-icon"
+            for="__toc"
+          >
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"
+              ><svg><use href="#svg-toc"></use></svg
+            ></i>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <section id="eventverarbeitung">
+<h1>Eventverarbeitung</h1>
+<p>Wenn eine Webseite auf Benutzeraktionen reagieren soll – also zum Beispiel auf Klicks, Tastatureingaben oder Bewegungen der Maus – dann spricht man von Eventverarbeitung (oder Ereignisverarbeitung).</p>
+<p>Damit JavaScript auf ein Ereignis reagieren kann, muss das Ereignis mit einer Funktion verknüpft werden.
+Dazu verwendet man die Methode <code class="docutils literal notranslate"><span class="pre">addEventListener()</span></code>.</p>
+<p>Sie „lauscht“ auf ein bestimmtes Ereignis (z. B. einen Klick) und führt dann den gewünschten Code aus.</p>
+<p>Der Aufbau sieht so aus:</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="nx">element</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;eventname&#39;</span><span class="p">,</span><span class="w"> </span><span class="kd">function</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// Code, der ausgeführt wird, wenn das Event passiert</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">element</span></code></strong> → das HTML-Element, das reagieren soll</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">'eventname'</span></code></strong> → der Name des Ereignisses (z. B. <code class="docutils literal notranslate"><span class="pre">'click'</span></code>, <code class="docutils literal notranslate"><span class="pre">'keydown'</span></code>, <code class="docutils literal notranslate"><span class="pre">'mouseover'</span></code>)</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">function()</span> <span class="pre">{</span> <span class="pre">...</span> <span class="pre">}</span></code></strong> → die Funktion, die ausgeführt wird, wenn das Event eintritt</p></li>
+</ul>
+<section id="klick-event-auf-einen-button">
+<h2>Klick-Event auf einen Button</h2>
+<section id="html">
+<h3>HTML:</h3>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">button</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;btn&quot;</span><span class="p">&gt;</span>Klick mich!<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="javascript">
+<h3>JavaScript:</h3>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="c1">// Das Button-Element auswählen</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">button</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;.btn&#39;</span><span class="p">);</span>
+
+<span class="c1">// Event-Listener hinzufügen</span>
+<span class="nx">button</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;click&#39;</span><span class="p">,</span><span class="w"> </span><span class="kd">function</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// Diese Funktion wird ausgeführt, wenn du auf den Button klickst</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Du hast den Button geklickt!&#39;</span><span class="p">);</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<p><strong>Erklärung:</strong>
+Wenn man auf den Button klickt, löst der Browser ein <strong><code class="docutils literal notranslate"><span class="pre">click</span></code>-Event</strong> aus und erzeugt ein Event-Objekt mit Informationen über das Ergeignis.
+Der <code class="docutils literal notranslate"><span class="pre">addEventListener()</span></code> fängt dieses Event ab und führt die Funktion aus.</p>
+</section>
+</section>
+<section id="eigenschaften-event-objekt">
+<h2>Eigenschaften Event-Objekt</h2>
+<p>Wenn man einem Event-Listener eine Funktion übergibt, kannst man einen <strong>Parameter</strong> (oft <code class="docutils literal notranslate"><span class="pre">event</span></code> oder <code class="docutils literal notranslate"><span class="pre">e</span></code>) angeben.
+Dieses Objekt enthält viele Informationen über das Ereignis.</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="nx">button</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;click&#39;</span><span class="p">,</span><span class="w"> </span><span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Event-Typ:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">event</span><span class="p">.</span><span class="nx">type</span><span class="p">);</span><span class="w">       </span><span class="c1">// z. B. &quot;click&quot;</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Ziel des Events:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">event</span><span class="p">.</span><span class="nx">target</span><span class="p">);</span><span class="w"> </span><span class="c1">// Das Element, auf das du geklickt hast</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Eigenschaft</p></th>
+<th class="head"><p>Bedeutung</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">event.type</span></code></p></td>
+<td><p>Welches Event ausgelöst wurde (z. B. <code class="docutils literal notranslate"><span class="pre">&quot;click&quot;</span></code>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">event.target</span></code></p></td>
+<td><p>Das Element, auf dem das Event passiert ist</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">event.key</span></code></p></td>
+<td><p>Bei Tastatur-Events: welche Taste du gedrückt hast</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">event.clientX</span></code>, <code class="docutils literal notranslate"><span class="pre">event.clientY</span></code></p></td>
+<td><p>Mausposition innerhalb des Browserfensters</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">event.preventDefault()</span></code></p></td>
+<td><p>Verhindert die Standardaktion des Events</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="mausbewegung-auf-einem-bild">
+<h2>Mausbewegung auf einem Bild</h2>
+<section id="id1">
+<h3>HTML:</h3>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">img</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;bild&quot;</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;https://picsum.photos/200&quot;</span> <span class="na">alt</span><span class="o">=</span><span class="s">&quot;Beispielbild&quot;</span> <span class="na">width</span><span class="o">=</span><span class="s">&quot;200&quot;</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="id2">
+<h3>JavaScript:</h3>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">bild</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;.bild&#39;</span><span class="p">);</span>
+
+<span class="c1">// Reagiere, wenn die Maus über das Bild geht</span>
+<span class="nx">bild</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;mouseover&#39;</span><span class="p">,</span><span class="w"> </span><span class="kd">function</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Die Maus ist über dem Bild!&#39;</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="c1">// Reagiere, wenn die Maus das Bild wieder verlässt</span>
+<span class="nx">bild</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;mouseout&#39;</span><span class="p">,</span><span class="w"> </span><span class="kd">function</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Die Maus hat das Bild verlassen!&#39;</span><span class="p">);</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<p>So kann man z. B. Bilder hervorheben oder verändern, wenn die Maus darüber fährt.</p>
+</section>
+</section>
+<section id="tastendruck-abfangen">
+<h2>Tastendruck abfangen</h2>
+<section id="id3">
+<h3>HTML:</h3>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">input</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;text&quot;</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;textfeld&quot;</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text&quot;</span> <span class="na">placeholder</span><span class="o">=</span><span class="s">&quot;Tippe etwas...&quot;</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="id4">
+<h3>JavaScript:</h3>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">eingabe</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;.text&#39;</span><span class="p">);</span>
+
+<span class="c1">// Reagiere auf jeden Tastendruck</span>
+<span class="nx">eingabe</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;keydown&#39;</span><span class="p">,</span><span class="w"> </span><span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Du hast diese Taste gedrückt:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">event</span><span class="p">.</span><span class="nx">key</span><span class="p">);</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<p><strong><code class="docutils literal notranslate"><span class="pre">event.key</span></code></strong> zeigt dir, welche Taste du gedrückt hast (z. B. „a“, „Enter“ oder „Backspace“).
+Damit kannst du z. B. Eingaben prüfen oder Shortcuts erstellen.</p>
+</section>
+</section>
+<section id="formular-absenden">
+<h2>Formular absenden</h2>
+<section id="id5">
+<h3>HTML:</h3>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">form</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;formular&quot;</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text&quot;</span> <span class="na">placeholder</span><span class="o">=</span><span class="s">&quot;Dein Name&quot;</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">button</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;submit&quot;</span><span class="p">&gt;</span>Absenden<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="id6">
+<h3>JavaScript:</h3>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">form</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;#formular&#39;</span><span class="p">);</span>
+
+<span class="nx">form</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;submit&#39;</span><span class="p">,</span><span class="w"> </span><span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// Verhindere das automatische Neuladen der Seite</span>
+<span class="w">  </span><span class="nx">event</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Du hast das Formular abgeschickt!&#39;</span><span class="p">);</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<p>Mit <code class="docutils literal notranslate"><span class="pre">event.preventDefault()</span></code> verhindert man die Standardaktion des Events (z. B. das Neuladen der Seite).</p>
+</section>
+</section>
+<section id="einen-event-listener-wieder-entfernen">
+<h2>Einen Event-Listener wieder entfernen</h2>
+<p>Manchmal will man, dass ein Event nur <strong>einmal</strong> reagiert oder später <strong>deaktiviert</strong> wird.
+Dafür gibt es <strong><code class="docutils literal notranslate"><span class="pre">removeEventListener()</span></code></strong>.</p>
+<p>Das funktioniert nur, wenn man <strong>eine benannte Funktion</strong> verwendest (keine anonyme).</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">button</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;stop&quot;</span><span class="p">&gt;</span>Klick mich!<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">stopButton</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;.stop&#39;</span><span class="p">);</span>
+
+<span class="kd">function</span><span class="w"> </span><span class="nx">handleClick</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Du hast den Button geklickt!&#39;</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">stopButton</span><span class="p">.</span><span class="nx">removeEventListener</span><span class="p">(</span><span class="s1">&#39;click&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">handleClick</span><span class="p">);</span><span class="w"> </span><span class="c1">// Listener wird entfernt</span>
+<span class="p">}</span>
+
+<span class="nx">stopButton</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;click&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">handleClick</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Jetzt reagiert der Button nur <strong>einmal</strong> auf den Klick.</p>
+</section>
+<section id="anonyme-benannte-und-arrow-functions">
+<h2>Anonyme, benannte und Arrow Functions</h2>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Art der Funktion</p></th>
+<th class="head"><p>Beispiel</p></th>
+<th class="head"><p>Besonderheiten</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Anonyme Funktion</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">button.addEventListener('click',</span> <span class="pre">function()</span> <span class="pre">{</span> <span class="pre">...</span> <span class="pre">});</span></code></p></td>
+<td><p>Schnell und direkt, kann aber nicht entfernt werden</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Benannte Funktion</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">button.addEventListener('click',</span> <span class="pre">handleClick);</span></code></p></td>
+<td><p>Kann mehrfach verwendet oder entfernt werden</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Arrow Function</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">button.addEventListener('click',</span> <span class="pre">()</span> <span class="pre">=&gt;</span> <span class="pre">{</span> <span class="pre">...</span> <span class="pre">});</span></code></p></td>
+<td><p>Kürzere Schreibweise, erbt <code class="docutils literal notranslate"><span class="pre">this</span></code> aus der Umgebung</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="die-wichtigsten-events-im-uberblick">
+<h2>Die wichtigsten Events im Überblick</h2>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Kategorie</p></th>
+<th class="head"><p>Eventname</p></th>
+<th class="head"><p>Beschreibung</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Maus</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">click</span></code></p></td>
+<td><p>Wird beim Klicken ausgelöst</p></td>
+</tr>
+<tr class="row-odd"><td><p>Maus</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">dblclick</span></code></p></td>
+<td><p>Doppelklick</p></td>
+</tr>
+<tr class="row-even"><td><p>Maus</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">mouseover</span></code> / <code class="docutils literal notranslate"><span class="pre">mouseout</span></code></p></td>
+<td><p>Maus über/verlässt Element</p></td>
+</tr>
+<tr class="row-odd"><td><p>Tastatur</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">keydown</span></code> / <code class="docutils literal notranslate"><span class="pre">keyup</span></code></p></td>
+<td><p>Taste wird gedrückt/losgelassen</p></td>
+</tr>
+<tr class="row-even"><td><p>Formular</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">submit</span></code></p></td>
+<td><p>Formular wird abgeschickt</p></td>
+</tr>
+<tr class="row-odd"><td><p>Formular</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">input</span></code></p></td>
+<td><p>Inhalt eines Eingabefelds ändert sich</p></td>
+</tr>
+<tr class="row-even"><td><p>Fenster</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">load</span></code></p></td>
+<td><p>Seite vollständig geladen</p></td>
+</tr>
+<tr class="row-odd"><td><p>Fenster</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">resize</span></code></p></td>
+<td><p>Fenstergröße geändert</p></td>
+</tr>
+<tr class="row-even"><td><p>Fenster</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">scroll</span></code></p></td>
+<td><p>Benutzer scrollt</p></td>
+</tr>
+<tr class="row-odd"><td><p>Sonstiges</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">change</span></code></p></td>
+<td><p>Eingabewert geändert (z. B. Dropdown)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="ubersicht-events">
+<h2>Übersicht Events</h2>
+<section id="maus-events">
+<h3>Maus-Events</h3>
+<p><code class="docutils literal notranslate"><span class="pre">click</span></code>, <code class="docutils literal notranslate"><span class="pre">dblclick</span></code>, <code class="docutils literal notranslate"><span class="pre">mousedown</span></code>, <code class="docutils literal notranslate"><span class="pre">mouseup</span></code>, <code class="docutils literal notranslate"><span class="pre">mousemove</span></code>, <code class="docutils literal notranslate"><span class="pre">mouseenter</span></code>, <code class="docutils literal notranslate"><span class="pre">mouseleave</span></code>, <code class="docutils literal notranslate"><span class="pre">mouseover</span></code>, <code class="docutils literal notranslate"><span class="pre">mouseout</span></code>, <code class="docutils literal notranslate"><span class="pre">contextmenu</span></code></p>
+</section>
+<section id="tastatur-events">
+<h3>Tastatur-Events</h3>
+<p><code class="docutils literal notranslate"><span class="pre">keydown</span></code>, <code class="docutils literal notranslate"><span class="pre">keypress</span></code>, <code class="docutils literal notranslate"><span class="pre">keyup</span></code></p>
+</section>
+<section id="formular-events">
+<h3>Formular-Events</h3>
+<p><code class="docutils literal notranslate"><span class="pre">input</span></code>, <code class="docutils literal notranslate"><span class="pre">change</span></code>, <code class="docutils literal notranslate"><span class="pre">submit</span></code>, <code class="docutils literal notranslate"><span class="pre">focus</span></code>, <code class="docutils literal notranslate"><span class="pre">blur</span></code>, <code class="docutils literal notranslate"><span class="pre">reset</span></code></p>
+</section>
+<section id="fenster-und-dokument-events">
+<h3>Fenster- und Dokument-Events</h3>
+<p><code class="docutils literal notranslate"><span class="pre">load</span></code>, <code class="docutils literal notranslate"><span class="pre">resize</span></code>, <code class="docutils literal notranslate"><span class="pre">scroll</span></code>, <code class="docutils literal notranslate"><span class="pre">unload</span></code>, <code class="docutils literal notranslate"><span class="pre">beforeunload</span></code>, <code class="docutils literal notranslate"><span class="pre">error</span></code></p>
+</section>
+<section id="touch-events-mobile-gerate">
+<h3>Touch-Events (mobile Geräte)</h3>
+<p><code class="docutils literal notranslate"><span class="pre">touchstart</span></code>, <code class="docutils literal notranslate"><span class="pre">touchmove</span></code>, <code class="docutils literal notranslate"><span class="pre">touchend</span></code>, <code class="docutils literal notranslate"><span class="pre">touchcancel</span></code></p>
+</section>
+<section id="clipboard-events">
+<h3>Clipboard-Events</h3>
+<p><code class="docutils literal notranslate"><span class="pre">copy</span></code>, <code class="docutils literal notranslate"><span class="pre">cut</span></code>, <code class="docutils literal notranslate"><span class="pre">paste</span></code></p>
+</section>
+<section id="drag-drop">
+<h3>Drag &amp; Drop</h3>
+<p><code class="docutils literal notranslate"><span class="pre">drag</span></code>, <code class="docutils literal notranslate"><span class="pre">dragstart</span></code>, <code class="docutils literal notranslate"><span class="pre">dragend</span></code>, <code class="docutils literal notranslate"><span class="pre">dragenter</span></code>, <code class="docutils literal notranslate"><span class="pre">dragleave</span></code>, <code class="docutils literal notranslate"><span class="pre">dragover</span></code>, <code class="docutils literal notranslate"><span class="pre">drop</span></code></p>
+</section>
+<section id="medien-events">
+<h3>Medien-Events</h3>
+<p><code class="docutils literal notranslate"><span class="pre">play</span></code>, <code class="docutils literal notranslate"><span class="pre">pause</span></code>, <code class="docutils literal notranslate"><span class="pre">ended</span></code>, <code class="docutils literal notranslate"><span class="pre">volumechange</span></code>, <code class="docutils literal notranslate"><span class="pre">timeupdate</span></code></p>
+</section>
+<section id="andere-nutzliche-events">
+<h3>Andere nützliche Events</h3>
+<p><code class="docutils literal notranslate"><span class="pre">animationstart</span></code>, <code class="docutils literal notranslate"><span class="pre">animationend</span></code>, <code class="docutils literal notranslate"><span class="pre">transitionend</span></code>, <code class="docutils literal notranslate"><span class="pre">wheel</span></code>, <code class="docutils literal notranslate"><span class="pre">pointerdown</span></code>, <code class="docutils literal notranslate"><span class="pre">pointerup</span></code></p>
+</section>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="eventweitergabe.html">
+            <div class="page-info">
+              <div class="context">
+                <span>Weiter</span>
+              </div>
+              <div class="title">Eventweitergabe</div>
+            </div>
+            <svg class="furo-related-icon">
+              <use href="#svg-arrow-right"></use>
+            </svg>
+          </a> <a class="prev-page" href="events.html">
+            <svg class="furo-related-icon">
+              <use href="#svg-arrow-right"></use>
+            </svg>
+            <div class="page-info">
+              <div class="context">
+                <span>Zurück</span>
+              </div>
+              
+              <div class="title">Events</div>
+              
+            </div>
+          </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright"> Copyright &#169; 2025, Philipp Erck
+            </div> Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and
+            <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            <div class="imp-da">
+              <a href="/impressum.html">Impressum</a>
+              <a href="/datenschutz.html">Datenschutz</a>
+            </div>
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+       
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">Auf dieser Seite</span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree"><ul>
+<li><a class="reference internal" href="#">Eventverarbeitung</a><ul>
+<li><a class="reference internal" href="#klick-event-auf-einen-button">Klick-Event auf einen Button</a><ul>
+<li><a class="reference internal" href="#html">HTML:</a></li>
+<li><a class="reference internal" href="#javascript">JavaScript:</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#eigenschaften-event-objekt">Eigenschaften Event-Objekt</a></li>
+<li><a class="reference internal" href="#mausbewegung-auf-einem-bild">Mausbewegung auf einem Bild</a><ul>
+<li><a class="reference internal" href="#id1">HTML:</a></li>
+<li><a class="reference internal" href="#id2">JavaScript:</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#tastendruck-abfangen">Tastendruck abfangen</a><ul>
+<li><a class="reference internal" href="#id3">HTML:</a></li>
+<li><a class="reference internal" href="#id4">JavaScript:</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#formular-absenden">Formular absenden</a><ul>
+<li><a class="reference internal" href="#id5">HTML:</a></li>
+<li><a class="reference internal" href="#id6">JavaScript:</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#einen-event-listener-wieder-entfernen">Einen Event-Listener wieder entfernen</a></li>
+<li><a class="reference internal" href="#anonyme-benannte-und-arrow-functions">Anonyme, benannte und Arrow Functions</a></li>
+<li><a class="reference internal" href="#die-wichtigsten-events-im-uberblick">Die wichtigsten Events im Überblick</a></li>
+<li><a class="reference internal" href="#ubersicht-events">Übersicht Events</a><ul>
+<li><a class="reference internal" href="#maus-events">Maus-Events</a></li>
+<li><a class="reference internal" href="#tastatur-events">Tastatur-Events</a></li>
+<li><a class="reference internal" href="#formular-events">Formular-Events</a></li>
+<li><a class="reference internal" href="#fenster-und-dokument-events">Fenster- und Dokument-Events</a></li>
+<li><a class="reference internal" href="#touch-events-mobile-gerate">Touch-Events (mobile Geräte)</a></li>
+<li><a class="reference internal" href="#clipboard-events">Clipboard-Events</a></li>
+<li><a class="reference internal" href="#drag-drop">Drag &amp; Drop</a></li>
+<li><a class="reference internal" href="#medien-events">Medien-Events</a></li>
+<li><a class="reference internal" href="#andere-nutzliche-events">Andere nützliche Events</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+       
+    </aside>
+  </div>
+</div><script src="../../_static/documentation_options.js?v=5a7626eb"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/scripts/furo.js?v=46bd48cc"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/translations.js?v=9bf55d28"></script>
+    </body>
+</html>

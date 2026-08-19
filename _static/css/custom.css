@@ -1,0 +1,117 @@
+:root {
+  --main-color: hsl(53, 93%, 54%);
+}
+
+.sidebar-logo {
+  width: 150px;
+}
+
+.sidebar-brand-text {
+  display: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--main-color);
+}
+
+h2,
+h3,
+h4,
+h5,
+h6 {
+  padding-top: 2rem;
+}
+
+img:not(.sidebar-logo) {
+  border-radius: 12px;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+.table table th {
+  background-color: var(--main-color);
+}
+
+a {
+    color: var(--main-color);
+
+    &:visited {
+      color: black;
+
+      &:hover {
+        color: var(--main-color);
+      }
+    }
+
+    &:hover {
+      color: black;
+    }
+}    
+
+.imp-da {
+  font-size: 0.8em;
+}
+
+/* Links unten im Footer */
+.related-pages {
+  a {
+    color: var(--main-color);
+
+    &:hover {
+
+      .page-info {
+        .title {
+          color: var(--main-color);
+        }
+      }
+    }
+
+    &:visited {
+      color: black;
+    }
+  }
+}
+
+
+.error404 {
+  display: grid;
+  place-items: center;
+
+  h2 {
+    font-size: 3rem;
+    text-align: center;
+  }
+
+  img {
+    border-radius: 140px;
+  }
+}
+
+/* Zurück nach oben Link */
+a.muted-link:hover {
+  color: var(--main-color);
+}
+
+/* Mermaid */
+
+.merm {
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+}
+
+.m-align {
+  text-align: center;
+}
+
+/* Dark Theme */
+
+body[data-theme="dark"] {
+  .table table th p {
+    color: black;
+  }
+}
